@@ -1,25 +1,24 @@
 module.exports = function (app) {
-  const Usuario = app.models.usuario;
+  const Usuario = app.models.usuario
 
   const HomeController = {
     index: function (req, res, next) {
-      res.render("home/index");
+        res.render('home/index')
     },
     login: function (req, res) {
-      const email = req.body.usuario.email;
-      const nome = req.body.usuario.nome;
+      const nome = req.body.nome
+      const email = req.body.email
       if (email && nome) {
-        const usuario = req.body.usuario;
-        req.session.usuario = usuario;
-        res.redirect("/contatos");
+        req.session.usuario = {nome,email}
+        res.redirect('/contacts')
       } else {
-        res.redirect("/");
+        res.redirect('/')
       }
     },
     logout: function (req, res) {
-      req.session.destroy();
-      res.redirect("/");
+      req.session.destroy()
+      res.redirect('/')
     },
-  };
-  return HomeController;
-};
+  }
+  return HomeController
+}
