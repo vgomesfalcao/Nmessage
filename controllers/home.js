@@ -1,8 +1,3 @@
-module.exports = function (app) {
-  var HomeController = {
-    index: function (req, res) {
-      res.render('home/index');
-    }
-  };
-  return HomeController;
+exports.index = function(req, res, next) {
+  res.render('home/index');
 };
