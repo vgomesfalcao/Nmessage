@@ -1,6 +1,6 @@
 module.exports = (app)=>{
   const home = app.controllers.home
   app.get('/', home.index)
-  app.post('/login',hode.login)
+  app.post('/login',home.login)
   app.get('/sair', home.logout)
 }
