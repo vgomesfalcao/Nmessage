@@ -8,7 +8,7 @@ const session = require('express-session')
 const server  = require('http').createServer(app)
 const io = require('socket.io')(server, {
   cors: {
-    origin: "https://example.com",
+    origin: "https://nmessage.herokuapp.com/",
     methods: ["GET", "POST"],
     allowedHeaders: ["vini-header"],
     credentials: true
