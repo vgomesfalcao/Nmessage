@@ -9,7 +9,8 @@ module.exports = function (app) {
       const nome = req.body.nome
       const email = req.body.email
       if (email && nome) {
-        req.session.usuario = {nome,email}
+        contatos = []
+        req.session.usuario = {nome,email,contatos}
         res.redirect('/contacts')
       } else {
         res.redirect('/')

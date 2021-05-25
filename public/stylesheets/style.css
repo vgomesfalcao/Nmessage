@@ -32,13 +32,15 @@ form {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 400px;
+}
+form div{
+  width: 100%;
 }
 
 form input{
   margin-bottom: 8px;
-  width: 25rem;
-  font-size: large;
-  height: 40px;
+  width: 100%;
 }
 
 form button{
@@ -48,9 +50,8 @@ form button{
   color: white;
   border: none;
   padding: 5px;
-  width: 50%;
-  height: 50px;
   border-radius: 8px;
+  width: 50%;
 }
 form button::placeholder{
   color: rgb(219, 219, 219);

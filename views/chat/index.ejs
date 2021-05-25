@@ -1,0 +1,38 @@
+<% include ../header %>
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    const socket = io('https://tender-skunk-91.loca.lt:3000', {
+      withCredentials: true,
+      extraHeaders: {
+        "vini-header": "abcd"
+      }
+    })
+    socket.on('send-client', msg => {
+      document.getElementById('chat').innerHTML += msg
+    })
+    const enviar = () => {
+      const nome = document.getElementById('nome').value
+      const msg = document.getElementById('msg').value
+      socket.emit('send-server', { nome, msg })
+    }
+  </script>
+
+  <header>
+    <h2>Nmessage - Chat</h2>
+  </header>
+  <section style="background-color: #f5f6f7;" class="p-4">
+    <pre class="p-2 border border-2 m-3" style="max-width: 600px; max-height:400px; width:100vw; height:50vh;"
+      id="chat"></pre>
+    <input type="hidden" id="nome" value="<%- usuario.nome %> ">
+    <div class="row">
+      <div class="col-10">
+        <input class="form-control" type="text" id="msg" placeholder="Mensagem">
+      </div>
+      <div class="col-2">
+        <button class="btn btn-primary" onclick="enviar()">Enviar</button>
+      </div>
+    </div>
+
+  </section>
+  <% include ../exit %>
+    <% include ../footer %>

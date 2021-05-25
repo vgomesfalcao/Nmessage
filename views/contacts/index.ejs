@@ -3,9 +3,41 @@
     <h2>Ntalk- Agenda de contatos</h2>
   </header>
   <section>
-    <p>
+    <p class="text-center mb-3 mt-2">
       Bem-vindo <strong><%- usuario.nome%></strong>
     </p>
+    <form action="/contact" method="post" class="mb-3">
+      <div class="mb-3">
+        <label for="nomeInput" class="form-label">Email</label>
+        <input type="text" name="nome" placeholder="Nome" id="nomeInput" class="form-control">
+      </div>
+      <div class="mb-3">
+        <label for="emailInput" class="form-label">Password</label>
+        <input type="text" name="email" placeholder="E-mail" id="emailInput" class="form-control">
+      </div>
+      <button type="submit" class="btn btn-primary">Cadastrar</button>
+    </form>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Nome</th>
+          <th scope="col">E-mail</th>
+          <th scope="col">Ação</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% usuario.contatos.forEach((contato,index) => { %>
+          <tr>
+            <th scope="row"><%- index %> </th>
+            <td><%- contato.nome %></td>
+            <td><%- contato.email %> </td>
+            <td><a href="/contato/<%- index %>">Detalhes</a></td>
+            <td><a href="/chat/<%- contato.email %>">Conversar</a></td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
   </section>
 <% include ../exit%>
 <% include ../footer%>
